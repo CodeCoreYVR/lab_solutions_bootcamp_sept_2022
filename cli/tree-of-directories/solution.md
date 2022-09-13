@@ -1,0 +1,1 @@
+mkdir -p gertrude_styles/anyanka_smith/john_smith/jenny_smith gertrude_styles/bianca_grave/lola_tul/fernando_tul gertrude_styles/jim_styles/bob_styles/karen_styles_grim/emma_styles_grim gertrude_styles/bianca_grave/lola_tul/herve_tul
