@@ -3,13 +3,40 @@
 }
 
 .container {
-
+  /* height: 50vh; */
+  max-width: 40em;
+  background-image: linear-gradient(yellow, green);
+  padding-left: 6em;
+  padding-right: 6em;
+  padding-top: 4em;
+  padding-bottom: 4em;
+  position: relative;
+  overflow: auto;  
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1vh;
 }
 
 .inner-box {
-
+  /* position: relative; */
+  /* margin: auto; */
 }
 
 .list {
+  font-size: 2vh;
+}
 
+h1 {
+  font-size: 7vh;
+  font-weight: bold;
+}
+
+h3 {
+  font-size: 5vh;
+  color: white;
+}
+
+h4 {
+  font-size: 2vh;
+  font-weight: bold;
 }
