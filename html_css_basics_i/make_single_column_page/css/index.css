@@ -1,17 +1,18 @@
 @import url('reset.css');
 
 .outer-container {
+  text-align: justify;
 
 }
 
 .container {
   /* height: 50vh; */
-  max-width: 40em;
+  max-width: 40rem;
   background-image: linear-gradient(yellow, green);
-  padding-left: 6em;
-  padding-right: 6em;
-  padding-top: 4em;
-  padding-bottom: 4em;
+  padding-left: 6vw;
+  padding-right: 6vw;
+  padding-top: 10vh;
+  padding-bottom: 10vh;
   position: relative;
   overflow: auto;  
   margin-left: auto;
@@ -24,27 +25,28 @@
 }
 
 .list {
-  font-size: 2vh;
+  font-size: 1em;
 }
 
 h1 {
-  font-size: 7vh;
+  font-size: 2.7em;
   font-weight: bold;
 }
 
 h3 {
-  font-size: 5vh;
+  font-size: 2em;
+  font-weight: bold;
   color: white;
 }
 
 h4 {
-  font-size: 2vh;
+  font-size: 1em;
   font-weight: bold;
   margin-bottom: 2vh;
 }
 
 ul {
   list-style-type: disc;
-  list-style-position: inside;
-  padding-left: 1em;
+  list-style-position: outside;
+  padding-left: 2vw;
 }
