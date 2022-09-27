@@ -1,0 +1,125 @@
+/* mobile first style */
+
+* {
+    margin: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0.25em 0em;
+}
+
+head {
+    display: none;
+}
+
+button {
+    background-color: white;
+    border: solid 2px grey;
+    padding: 0.75em 0.75em;
+    width: 10em;
+    margin: 2em auto;
+    align-items: center;
+}
+
+h1 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+p {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+/* media query */
+
+@media(min-width: 700px) {
+    * {
+        text-align: left;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 1em;
+    }
+    
+    .title {
+        /* border: 2px solid black; */
+        grid-column-start: 2;
+    }
+
+    .title h1 {
+        font-size: 3em;
+    }
+
+    .title p {
+        font-size: 1.25em;
+    }
+
+    .lady {
+        /* border: 2px solid black; */
+        grid-column-start: 4;
+        grid-row-start: 1;
+        padding-top: 3em;
+        padding-bottom: 3em;
+    }
+
+    .iphone-portrait {
+        /* border: 2px solid black; */
+        grid-column-start: 2;
+        grid-row-start: 2;
+        grid-row-end: 4;
+        padding-bottom: 2em;
+        padding-top: 2em;
+    }
+
+    .flowers {
+        /* border: 2px solid black; */
+        grid-column-start: 3;
+        grid-row-start: 2;
+    }
+
+    .text {
+        /* border: 2px solid black; */
+        grid-column-start: 3;
+        grid-row-end: 4;
+        position: relative;
+        font-size: 1.25em;
+    }
+
+    .text-span {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+
+
+    .man {
+        /* border: 2px solid black; */
+        grid-column-start: 1;
+        grid-row-start: 4;
+    }
+
+    .pope {
+        /* border: 2px solid black; */
+        grid-column-start: 4;
+        grid-row-start: 4;
+        justify-content: center;
+    }
+
+    .iphone-landscape {
+        /* border: 2px solid black; */
+        grid-column-start: 2;
+        grid-column-end: 4;
+        grid-row-start: 5;
+    }
+
+    button {
+        /* border: 2px solid black; */
+        grid-column-start: 2;
+        grid-column-end: 4;
+        grid-row-start: 6;
+        margin-top: 5em;
+        margin-bottom: 5em;
+    }
+}
