@@ -1,0 +1,8 @@
+- Copy and pasted sql_lab.sql from moodle.
+$ createdb sql_lab
+   - creates an empty db called sql_lab.
+$ psql < sql_lab.sql
+   - This adds contents of sql_lab.sql to db.
+- Finished quires1.sql
+$ psql -d sql_lab -f L1Queries1.sql
+   - This runs the file in psql.
