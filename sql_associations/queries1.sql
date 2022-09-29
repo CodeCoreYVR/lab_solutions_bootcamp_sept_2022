@@ -1,5 +1,5 @@
 -- To run lab ender:
-    -- $ psql-d sql_lab -f L1Queries1.sql
+    -- $ psql -d sql_lab -f queries1.sql
 
 -- [Lab] Queries 1
 

@@ -4,5 +4,13 @@ $ createdb sql_lab
 $ psql < sql_lab.sql
    - This adds contents of sql_lab.sql to db.
 - Finished quires1.sql
-$ psql -d sql_lab -f L1Queries1.sql
+$ psql -d sql_lab -f queries1.sql
    - This runs the file in psql.
+- Finished queries2.sql
+$ qsql -d sql_lab -f queries2.sql
+
+
+
+
+
+
