@@ -1,0 +1,28 @@
+<%- include('./partials/header') %>
+
+  <h1>Random Person</h1>
+
+  <form action="/random_person">
+      <div>
+        <label for="names">Enter the names:</label>
+      </div>
+      <div>
+        <textarea name="names" 
+                  rows="5" 
+                  cols="30"
+                  ><%= names ? names : null %></textarea>
+      </div>
+
+      <button type="submit">Submit</button>
+  </form>
+
+  <div class="results">
+    <% if (winner) { %>
+      <h2>The winner is </h2>
+      <p class="results-output">
+      <%= winner %>!
+    </p>
+    <% } %>
+  </div>
+
+  <%- include('./partials/footer') %>

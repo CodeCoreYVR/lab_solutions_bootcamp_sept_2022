@@ -1,0 +1,29 @@
+<%- include('./partials/header') %>
+
+<form>
+  <div>   
+    <h1>Chose Two Numbers</h1>
+    <div class='input-box'>
+      <label for='number1'>Enter a number for Fizz</label>
+      <input type="number" name="number1" value="<%= number1 %>"/>
+    </div>
+    <div class='input-box'>
+      <label for='number2'>Enter a number for buzz</label>
+      <input type="number" name="number2", value="<%= number2 %>"/>
+    </div>
+  </div>
+  <div><button type='submit' >Submit</button></div>
+</form>
+
+<div class='results'>
+  <div>
+    <% if(fizzBuzz.length > 0){ %>
+      <h2>Fizz Buzz</h2>
+      <p class='results-output'>
+        <%= fizzBuzz.join(' ') %>
+      </p>
+    <% } %>
+  </div>
+</div>
+
+<%- include('./partials/footer') %>

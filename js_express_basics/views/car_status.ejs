@@ -1,0 +1,29 @@
+<%- include('./partials/header') %>
+
+  <h1>Car Status</h1>
+  
+  <form action="/car_status">
+    <div>
+    <label for="yearOfCar">Enter the year of your vehicle:</label>
+
+    <select name="yearOfCar">
+      <% for (let i = 2030; i >= 1950; i--) { %>
+        <option value="<%= i %>"><%= i %></option>
+      <% } %>
+    </select>
+  </div>
+  <br>
+    <button type="submit">Submit</button>
+  </form>
+
+  <div class="results">
+    <% if (!isNaN(yearOfCar)) { %> 
+      <p class="results-output">
+        <h2>Your car is <%= carStatus %>!</h2>
+      </p>
+    <% } %>
+  </div>
+
+  <%- include('./partials/footer') %>
+
+
