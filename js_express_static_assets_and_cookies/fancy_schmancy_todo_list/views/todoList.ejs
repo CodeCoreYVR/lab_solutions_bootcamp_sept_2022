@@ -1,0 +1,13 @@
+<%- include('./partials/header') %>
+<h1>Tasks</h1>
+<div class="tasks">
+  <% todoList.forEach(todo => { %>
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title"><%= todo.title %></h5>
+        <p class="card-text"><%= todo.body %></p>
+      </div>
+    </div>
+  <% }) %>
+</div>
+<%- include('./partials/footer') %>

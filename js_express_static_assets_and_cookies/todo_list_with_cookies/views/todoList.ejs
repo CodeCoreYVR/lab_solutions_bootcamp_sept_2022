@@ -1,0 +1,8 @@
+<%- include('./partials/header') %>
+<h1>Tasks</h1>
+<ul>
+<% todoList.forEach(todo => { %>
+  <li><%= todo.title %> - <%= todo.body %></li>
+<% }) %>
+</ul>
+<%- include('./partials/footer') %>

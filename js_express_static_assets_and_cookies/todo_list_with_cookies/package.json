@@ -1,0 +1,21 @@
+{
+	"name": "todo_list_with_cookies",
+	"version": "1.0.0",
+	"description": "A todo list that saves todo items in cookies",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "nodemon"
+	},
+	"author": "Maxwell Gordon",
+	"license": "ISC",
+	"dependencies": {
+		"cookie-parser": "^1.4.3",
+		"ejs": "^2.5.7",
+		"express": "^4.16.2",
+		"morgan": "^1.9.0"
+	},
+	"devDependencies": {
+		"nodemon": "^1.14.11"
+	}
+}

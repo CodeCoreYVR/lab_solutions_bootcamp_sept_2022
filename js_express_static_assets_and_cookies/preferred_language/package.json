@@ -1,0 +1,21 @@
+{
+	"name": "preferred_language",
+	"version": "1.0.0",
+	"description": "App for selecting a preferred language and saving it in the cookies",
+	"main": "app.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "nodemon app.js"
+	},
+	"author": "Maxwell Gordon",
+	"license": "ISC",
+	"dependencies": {
+		"cookie-parser": "^1.4.3",
+		"ejs": "^2.5.9",
+		"express": "^4.16.3",
+		"morgan": "^1.9.0"
+	},
+	"devDependencies": {
+		"nodemon": "^1.17.3"
+	}
+}

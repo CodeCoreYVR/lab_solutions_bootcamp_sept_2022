@@ -1,0 +1,22 @@
+<%- include('./partials/header') %>
+<h1>Select a Preferred Language</h1>
+<form method="POST" action="/preferred_language">
+    <div>
+        <label for="name">Name</label>
+        <input type="text" name="name" value="<%= name %>">
+    </div>
+    <div>
+        <label for="language">Preferred Language</label>
+        <select name="language" id="language">
+        <% for (let language in preferred_languages) { %>
+            <option value="<%= language %>" <% if (language === selected) { %> selected <% } %> >
+                <%= preferred_languages[language] %>
+            </option>
+        <% } %>
+        </select>
+    </div>
+    <div>
+        <input type="submit" value="Submit">
+    </div>
+</form>
+<%- include('./partials/footer') %>
