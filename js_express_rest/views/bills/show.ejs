@@ -1,0 +1,15 @@
+<%- include("../partials/header") %>
+<div class="card mb-4">
+    <div class="card-body">
+        <h5 class="card-title">Splitting Details</h5>  
+        <p class="card-text">
+            Bill Total is $<%= bill.billTotal %>,
+            Tax Percentage is <%= bill.taxPercent %>,
+            Tip Percentage is <%= bill.tipPercent %>,
+            <%= bill.groupSize %> people in total,
+            so each of you should pay $<%= amount %>
+        </p>
+        Created at <%= new Date(bill.createdAt).toLocaleString() %>
+    </div>
+</div>
+<%- include("../partials/footer") %>

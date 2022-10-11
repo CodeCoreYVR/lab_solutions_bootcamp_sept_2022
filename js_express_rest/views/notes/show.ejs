@@ -1,0 +1,23 @@
+<%- include("../partials/header") %>
+<div class="card mb-4">
+    <div class="card-body">
+        <h5 class="card-title"><%= note.title %></h5>  
+        <p class="card-text">
+            <%= note.body %>
+            <em>Noted at <%= new Date(note.createdAt).toLocaleString() %></em>
+        </p>
+        <div class="d-flex">
+            <a 
+                class="btn btn-outline-success mr-2"
+                href="/notes/<%= note.id %>/edit"
+            >
+                Edit
+            </a>
+        </div>
+        <form method="POST" action="/notes/<%= note.id %>">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" class="btn btn-outline-danger" value="Delete">
+        </form>
+    </div>
+</div>
+<%- include("../partials/footer") %>

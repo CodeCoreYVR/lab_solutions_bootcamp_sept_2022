@@ -1,0 +1,16 @@
+<%- include("../partials/header") %>
+
+<h1>List</h1>
+<div class="post-cards">
+    <% for (let bill of bills) { %>
+        <div class="card mb-4">
+            <div class="card-body">
+                <a href="/bills/<%= bill.id %>">
+                    <h5 class="card-title"><%= bill.billTotal %></h5>
+                </a>
+            </div>
+        </div>
+    <% } %>
+</div>
+
+<%- include("../partials/footer") %>

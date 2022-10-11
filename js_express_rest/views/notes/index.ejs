@@ -1,0 +1,16 @@
+<%- include("../partials/header") %>
+
+<h1>List</h1>
+<div class="post-cards">
+    <% for (let note of notes) { %>
+        <div class="card mb-4">
+            <div class="card-body">
+                <a href="/notes/<%= note.id %>">
+                    <h5 class="card-title"><%= note.title %></h5>
+                </a>
+            </div>
+        </div>
+    <% } %>
+</div>
+
+<%- include("../partials/footer") %>

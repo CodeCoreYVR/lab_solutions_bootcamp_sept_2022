@@ -1,0 +1,38 @@
+<%- include("../partials/header") %>
+
+<form method="POST" action="/bills">
+  <div class="form-group">
+    <input
+      type="test"
+      class="form-control"
+      name="billTotal"
+      placeholder="Enter the bill total"
+    />
+  </div>
+  <div class="form-group">
+    <input
+      type="test"
+      class="form-control"
+      name="taxPercent"
+      placeholder="Enter the tax percent"
+    />
+  </div>
+  <div class="form-group">
+    <input
+      type="test"
+      class="form-control"
+      name="tipPercent"
+      placeholder="Enter the tip percent"
+    />
+  </div>
+  <div class="form-group">
+    <input
+      type="test"
+      class="form-control"
+      name="groupSize"
+      placeholder="Enter how many people do u have"
+    />
+  </div>
+  <input type="submit" class="btn btn-outline-success" value="Submit" />
+</form>
+<%- include("../partials/footer") %>

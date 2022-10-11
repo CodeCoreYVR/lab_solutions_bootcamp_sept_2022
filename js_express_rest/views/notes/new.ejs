@@ -1,0 +1,21 @@
+<%- include("../partials/header") %>
+
+<form method="POST" action="/notes">
+  <div class="form-group">
+    <input
+      type="test"
+      class="form-control"
+      name="title"
+      placeholder="Enter the title"
+    />
+  </div>
+  <div class="form-group">
+    <textarea
+      class="form-control"
+      name="body"
+    >
+  </textarea>
+  </div>
+  <input type="submit" class="btn btn-outline-success" value="Submit" />
+</form>
+<%- include("../partials/footer") %>

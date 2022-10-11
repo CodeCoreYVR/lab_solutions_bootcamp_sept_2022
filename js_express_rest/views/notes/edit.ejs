@@ -1,0 +1,23 @@
+<%- include('../partials/header') %>
+<h1>Edit Note</h1>
+<form method="POST" action="/notes/<%= note.id %>">
+    <input type="hidden" name="_method" value="PATCH">
+    <div class="form-group">
+        <input 
+            type="text"
+            class="form-control" 
+            name="title" 
+            placeholder="Enter the title"
+            value="<%= note.title %>"
+        >
+    </div>
+    <div class="form-group">
+        <textarea 
+            class="form-control"
+            name="body" 
+            placeholder="Enter your note body"
+        ><%= note.body %></textarea>
+    </div>
+    <input type="submit" class="btn btn-outline-success" value="Submit">
+</form>
+<%- include('../partials/footer') %>
