@@ -10,6 +10,8 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @reviews = @product.reviews
+    @review = Review.new
   end
 
   def create

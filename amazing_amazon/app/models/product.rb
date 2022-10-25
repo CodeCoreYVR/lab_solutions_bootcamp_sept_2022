@@ -1,4 +1,5 @@
 class Product < ApplicationRecord
+  has_many :reviews, dependent: :destroy
     validates(:title,
             presence: { message: "Title must be provided" },
             :uniqueness => { :case_sensitive => false })
