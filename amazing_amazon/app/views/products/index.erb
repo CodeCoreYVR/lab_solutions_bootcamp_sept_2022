@@ -1,0 +1,12 @@
+<h1>This is the index of products</h1>
+
+<p><%= link_to "Add Product", new_product_path %></p>
+
+<% @products.each do |product| %>
+  <%= link_to product_path(product) do %>
+    <ul>
+      <li><%= product.id %>: <%= product.title %>
+      <br>price: <%= number_to_currency product.price %></li>
+    </ul>
+  <% end %>
+<% end %>
