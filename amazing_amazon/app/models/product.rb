@@ -1,5 +1,7 @@
 class Product < ApplicationRecord
-  has_many :reviews, dependent: :destroy
+  has_many :reviews, -> { order("updated_at DESC") }, dependent: :destroy
+  belongs_to :user
+
     validates(:title,
             presence: { message: "Title must be provided" },
             :uniqueness => { :case_sensitive => false })

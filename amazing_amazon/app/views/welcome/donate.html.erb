@@ -1,0 +1,57 @@
+<h1>Support us! Make a stripe payment</h1>
+<%= form_tag payment_index_path, id: "submission-form" do %>
+  <label>Tip</label>
+    <input id="amount" name="amount">
+    <%= hidden_field_tag :stripe_token %>
+<% end %>
+<div id="stripe-error-message"></div>
+<%= form_tag "", id: "stripe-token-form" do %>
+  <div>
+    <label for="card-number">Card Number</label>
+    <input id="card-number">
+  </div>
+  <div>
+    <label>Expiry</label>
+    <%= select_month(Date.today, add_month_numbers: true) %>
+    <%= select_year(Date.today, start_year: Date.today.year,
+                                end_year: Date.today.year + 10) %>
+  </div>
+  <div>
+    <label for="cvc">CVC</label>
+    <input id="cvc">
+  </div>
+  <div>
+    <%= submit_tag "Submit" %>
+  </div>
+<% end %>
+
+<script>
+$(document).ready(function(){
+    // Setting the publishable key as per Stripe documentation
+    Stripe.setPublishableKey($("meta[name='stripe-pk']").attr("content"));
+  
+    $("#stripe-token-form").on("submit", function(e){
+      e.preventDefault();
+      // Making the request to generate the token
+      Stripe.card.createToken({
+        number: $("#card-number").val(),
+        cvc: $('#cvc').val(),
+        exp_month: $('#date_month').val(),
+        exp_year: $('#date_year').val()
+      }, stripeResponseHandler);
+    });
+  
+    // This function will be called when the token is returned from Stripe
+    stripeResponseHandler = function(status, response) {
+    if(status === 200) {
+        // case of success getting the token
+        $("#stripe_token").val(response.id);
+        $("#submission-form").submit();
+    } else {
+        // Case of error
+        var errorMessage = response.error.message;
+        $("#stripe-error-message").addClass("alert alert-danger").html(errorMessage);
+    }
+    };
+  });
+</script>

@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  
+  root "products#index"
+  
+  get "/home" => "welcome#home"
+  get "/about" => "welcome#about"
+  get "/contact_us" => "welcome#contact_us"
+  get "/support_me" => "welcome#donate"
+  get "/thank_you" => "welcome#thank_you"
 
-  # Defines the root path route ("/")
-  # root "articles#index"
-
+  resources :users, only: [:new, :create]
+  resource :session, only: [:new, :create, :destroy]
   resources :products do
     resources :reviews, only: [:create, :destroy]
   end

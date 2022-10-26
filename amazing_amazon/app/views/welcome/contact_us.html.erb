@@ -1,0 +1,10 @@
+<h1>Contact Us</h1> 
+<%= form_with url: "/thank_you", method: :get do |form| %>
+<%= form.label :name %>
+<%= form.text_field :name %>
+<%= form.label :email %>
+<%= form.text_field :email %>
+<%= form.label :text %>
+<%= form.text_field :text %>
+<%= form.submit "Submit" %>
+<% end %>

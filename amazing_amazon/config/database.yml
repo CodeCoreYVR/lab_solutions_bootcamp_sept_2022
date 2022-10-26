@@ -13,7 +13,8 @@ development:
   <<: *default
   database: amazing_amazon_sept
   username: postgres
-  password: pg123
+  password: pg123 
+  # note: password needs to be moved to environment variable or .env so that the password is not exposed
 
 test:
   <<: *default

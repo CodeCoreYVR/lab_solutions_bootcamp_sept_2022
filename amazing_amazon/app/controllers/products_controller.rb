@@ -1,21 +1,18 @@
 class ProductsController < ApplicationController
+  before_action :load_product, except: [:create, :index]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @products = Product.order(created_at: :DESC)
   end
 
-  def show
-    @product = Product.find(params[:id])
-  end
-
   def new
-    @product = Product.new
-    @reviews = @product.reviews
-    @review = Review.new
   end
 
   def create
     @product = Product.new(product_params)
+    @product.user = @current_user
+    
     @product.save
     if @product.save
       redirect_to product_path(@product)
@@ -24,23 +21,25 @@ class ProductsController < ApplicationController
     end
   end
 
+  def show
+    @reviews = @product.reviews
+    @review = Review.new
+  end
+
   def destroy
-    @product = Product.find(params[:id])
     @product.destroy
     redirect_to products_path
   end
 
   def edit
-    @product = Product.find(params[:id])
   end
 
   def update
-    @product = Product.find(params[:id])
     @product.update(product_params)
     if @product.save
       redirect_to product_path(@product)
     else
-      render :new
+      render :edit
     end
 
   end
@@ -49,6 +48,14 @@ class ProductsController < ApplicationController
 
   def product_params
     params.require(:product).permit(:title, :description, :price)
+  end
+  
+  def load_product
+    if params[:id].present?
+      @product = Product.find(params[:id])
+    else
+      @product = Product.new
+    end
   end
 
 end
