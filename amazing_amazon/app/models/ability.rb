@@ -33,7 +33,11 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
-    
+
+    can :read, :admin do 
+      user.is_admin
+    end
+
     can [:update, :delete], Product do |product|
       product.user == user
     end

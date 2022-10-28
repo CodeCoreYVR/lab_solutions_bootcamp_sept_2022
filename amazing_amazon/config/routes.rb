@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'admin/panel'
   
   root "products#index"
   
