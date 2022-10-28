@@ -4,11 +4,17 @@
   <%= link_to "New Product", new_product_path %> 
   <%= link_to "About", about_path %> 
   <%= link_to "Contact Us", contact_us_path %> 
+  
+  <% if can? :read, :admin %>
+    <%= link_to "ADMIN", admin_panel_path %>
+  <% end %>
+
   <% if user_signed_in? %> 
     <span class='text-muted mr-3'>Hello, <%= current_user.full_name %></span>
     <%= button_to "Log Out", session_path, method: :delete, class: "btn btn-danger" %>
-    <% else %>
+  <% else %>
       <%= link_to "Log In", new_session_path, class: "btn btn-success" %>
       <%= link_to "Sign Up", new_user_path, class: "btn btn-success" %>
-    <% end %>
+  <% end %>
+
 </nav>

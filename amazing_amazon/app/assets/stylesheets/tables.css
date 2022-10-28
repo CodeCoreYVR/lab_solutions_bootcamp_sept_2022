@@ -1,0 +1,13 @@
+
+
+table, th, td {
+  /* border: solid 2px black;
+  border-collapse: collapse; */
+  box-shadow: 0 0 4px grey;
+}
+th,td {
+  padding: 10px 10px 1px 10px;
+}
+tr > td:first-child {
+  font-weight: bold;
+}
