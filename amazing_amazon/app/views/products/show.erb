@@ -3,32 +3,41 @@
 <br>Price: <%= number_to_currency @product.price %></p>
 <p>
 <small class='text-muted'>
-    sold by <em><%= @product.user.full_name %></em>
-  </small>
+  sold by <em><%= @product.user.full_name %></em>
+</small>
   </p>
-<%= link_to "Edit", edit_product_path %>
-<br>
-<br>
+  <% if can? :update, @product %>
+    <%= link_to "Edit", edit_product_path(@product) %>
+  <% end %>
 
-<%= button_to "Delete", @product, method: :delete %>
+  <br>
+  <br>
+  <% if can? :delete, @product %>
+    <%= button_to "Delete", @product, method: :delete %>
+  <% end %>
 
+  <p><%= link_to "Back", products_path %></p>
 
-<p><%= link_to "Back", products_path %></p>
-
-<h3>
+  <h3>
  Reviews
  </h3>
 
  <ul>
      <% @reviews.each do |review| %>
-         <li>
-             <%= review.body %>
-             <%= review.rating %>
-             <p class='font-weight-lighter d-inline-block'>
-             <small>Reviewed by <%= review.user.full_name %></small></p>
-                <%= button_to("Delete", product_review_path(@product.id, review.id) ,method: :delete, data:{confirm:"Are you sure?"}) %>
-             
-         </li>
+         <% if can? :read, review %>
+          <li style="<%= review.is_hidden ? "color: grey" : "" %>">
+              <%= review.body %>
+              <%= review.rating %>
+              <p class='font-weight-lighter d-inline-block'>
+              <small>Reviewed by <%= review.user.full_name %></small></p>
+              <% if can? :delete, review %>
+                  <%= button_to("Delete", product_review_path(@product.id, review.id) ,method: :delete, data:{confirm:"Are you sure?"}) %>
+              <% end %>
+              <% if review.is_hidden && (can? :update, review) %>
+                <%= button_to("UnHide", product_review_unhide_path(@product.id, review.id), method: 'post' ) %>
+              <% end %>
+          </li>
+        <% end %>
      <% end %>
  </ul>
 
@@ -49,6 +58,11 @@
  <div>
      <%= form.label :rating%>
      <%= form.number_field :rating%>
+ </div>
+ <div>
+    <%= form.label :is_hidden %>
+    <%= form.check_box :is_hidden %>
+
  </div>
  <%= form.submit %>
  <% end %>

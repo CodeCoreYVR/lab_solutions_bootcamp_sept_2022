@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
   resources :products do
     resources :reviews, only: [:create, :destroy]
+    post '/reviews/:id', to: 'reviews#unhide', as: :review_unhide
   end
 
 end

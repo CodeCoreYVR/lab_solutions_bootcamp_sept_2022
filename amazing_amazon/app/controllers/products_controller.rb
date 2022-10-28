@@ -27,6 +27,13 @@ class ProductsController < ApplicationController
   end
 
   def destroy
+    # bellow if can? statment prevents a hacker from typing the destroy command in the url
+    # to see if passes.
+    if !(can? :delete, @product)
+      redirect_to @product, error: "not authorized"
+      # redirect_to product_path(@product), error: "not authorized" -- also works
+    end
+
     @product.destroy
     redirect_to products_path
   end
@@ -35,7 +42,14 @@ class ProductsController < ApplicationController
   end
 
   def update
-    @product.update(product_params)
+    # bellow if can? statment prevents a hacker from typing the update command in the url
+    # to see if passes.
+    if !(can? :update, @product)
+      redirect_to @product, error: "not authorized"
+      # redirect_to product_path(@product), error: "not authorized" -- also works
+    end
+    @product.update(product_params)  
+
     if @product.save
       redirect_to product_path(@product)
     else
