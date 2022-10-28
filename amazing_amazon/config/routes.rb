@@ -16,4 +16,6 @@ Rails.application.routes.draw do
     post '/reviews/:id', to: 'reviews#unhide', as: :review_unhide
   end
 
+  resources :news_articles
+
 end
