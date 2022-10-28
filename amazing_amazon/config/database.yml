@@ -13,13 +13,14 @@ development:
   <<: *default
   database: amazing_amazon_sept
   username: postgres
-  password: pg123 
+  password: pg123
+  host: localhost
   # note: password needs to be moved to environment variable or .env so that the password is not exposed
 
 test:
   <<: *default
-  # database: db/test.sqlite3
+  database: amazing_amazon_sept_test
 
 production:
   <<: *default
-  # database: db/production.sqlite3
+  database: amazing_amazon_sept_prod
