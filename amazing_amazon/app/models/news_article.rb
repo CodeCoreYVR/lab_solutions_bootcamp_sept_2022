@@ -3,6 +3,7 @@ class NewsArticle < ApplicationRecord
     validates :description, presence: true
     validate :published_at_after_created_at
     before_save :titlize_title
+    belongs_to :user
 
     def published_at_after_created_at
         if published_at && created_at && (published_at < created_at)

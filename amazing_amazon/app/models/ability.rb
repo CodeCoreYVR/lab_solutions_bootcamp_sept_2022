@@ -50,5 +50,10 @@ class Ability
       review.user == user || !review.is_hidden
     end
 
+    can :crud, User, id: user.id
+
+    can(:crud, NewsArticle) do |news_article|
+      news_article.user == user
+    end
   end
 end
