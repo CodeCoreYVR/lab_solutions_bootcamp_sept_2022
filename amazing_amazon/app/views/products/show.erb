@@ -9,37 +9,23 @@
   <% if can? :update, @product %>
     <%= link_to "Edit", edit_product_path(@product) %>
   <% end %>
-
-  <br>
-  <br>
   <% if can? :delete, @product %>
+    <br/>
     <%= button_to "Delete", @product, method: :delete %>
   <% end %>
+  
+  <p>
+    <% if user_signed_in? %>
+        <% favourite = current_user.favourites.find_by_product_id(@product.id) %>
+        <% if favourite %>
+          <%= button_to "Remove from favourite", product_remove_favourite_path(@product.id,favourite.id), method: :delete %>
+        <% else %>
+          <%= button_to "Add to favourite", product_favourites_path(@product), method: :post %>
+        <% end %>
+    <% end %>
+  </p>
 
   <p><%= link_to "Back", products_path %></p>
-
-  <h3>
- Reviews
- </h3>
-
- <ul>
-     <% @reviews.each do |review| %>
-         <% if can? :read, review %>
-          <li style="<%= review.is_hidden ? "color: grey" : "" %>">
-              <%= review.body %>
-              <%= review.rating %>
-              <p class='font-weight-lighter d-inline-block'>
-              <small>Reviewed by <%= review.user.full_name %></small></p>
-              <% if can? :delete, review %>
-                  <%= button_to("Delete", product_review_path(@product.id, review.id) ,method: :delete, data:{confirm:"Are you sure?"}) %>
-              <% end %>
-              <% if review.is_hidden && (can? :update, review) %>
-                <%= button_to("UnHide", product_review_unhide_path(@product.id, review.id), method: 'post' ) %>
-              <% end %>
-          </li>
-        <% end %>
-     <% end %>
- </ul>
 
  <h4>Write your review</h4>
 
@@ -66,3 +52,34 @@
  </div>
  <%= form.submit %>
  <% end %>
+
+ 
+ <h4 class="mt-3">Reviews</h4>
+<% @product.reviews.each do |review| %>
+  <div class='shadow-sm p-3 mb-1 bg-white rounded'>   
+      
+    <% if review.is_hidden && (can? :update, review) %>
+      <%= button_to("UnHide", product_review_unhide_path(@product.id, review.id), method: 'post' ) %>
+    <% end %>
+
+    <p class='review-body' style="<%= review.is_hidden ? "color: grey" : "" %>"><%= review.body %></p>    
+    
+    <small class='font-weight-lighter d-inline-block text-muted'>by <%= review.user.full_name %></small>
+    
+    <%= button_to("Delete", product_review_path(@product.id, review.id), method: :delete, 
+      class: "btn btn-danger btn-sm",
+      data: { confirm: "Are you sure?" }) %>
+
+    <p>
+      <% if user_signed_in? %>
+          <% like = current_user.likes.find_by_review_id(review) %>
+          <% if like %>
+            <%= button_to "Unlike", like_path(like), method: :delete %>
+          <% else %>
+            <%= button_to "Like", product_review_likes_path(@product, review.id), method: :post %>
+          <% end %>
+      <% end %>
+     <%= review.likes.count %> like/s
+    </p>
+  </div>
+<% end %>

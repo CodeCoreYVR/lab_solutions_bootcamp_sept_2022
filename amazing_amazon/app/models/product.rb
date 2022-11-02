@@ -2,6 +2,9 @@ class Product < ApplicationRecord
   has_many :reviews, -> { order("updated_at DESC") }, dependent: :destroy
   belongs_to :user
 
+  has_many :favourites, dependent: :destroy
+  has_many :favourite_users, through: :favourites, source: :user
+
     validates(:title,
             presence: { message: "Title must be provided" },
             :uniqueness => { :case_sensitive => false })

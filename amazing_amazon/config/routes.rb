@@ -8,11 +8,16 @@ Rails.application.routes.draw do
   get "/contact_us" => "welcome#contact_us"
   get "/support_me" => "welcome#donate"
   get "/thank_you" => "welcome#thank_you"
+  get "/favourites_products" => "products#favourite_products"
 
   resources :users, only: [:new, :create]
   resource :session, only: [:new, :create, :destroy]
   resources :products do
-    resources :reviews, only: [:create, :destroy]
+    resource :favourites, only: [:create]
+    delete '/favourites/:id', to: 'favourites#destroy', as: :remove_favourite
+    resources :reviews, only: [:create, :destroy] do
+      resources :likes, shallow: true, only: [:create, :destroy]
+    end
     post '/reviews/:id', to: 'reviews#unhide', as: :review_unhide
   end
 

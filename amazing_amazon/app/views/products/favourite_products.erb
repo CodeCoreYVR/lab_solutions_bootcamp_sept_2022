@@ -1,0 +1,11 @@
+<h1>My favourite products</h1>
+
+<% @current_user.favourite_products.each do |product| %>
+    <%= link_to product_path(product) do %>
+      <ul>
+        <li><%= product.id %>: <%= product.title %>
+        <br>price: <%= number_to_currency product.price %></li>
+      </ul>
+    <% end %>
+  <% end %>
+  

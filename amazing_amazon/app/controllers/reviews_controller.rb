@@ -22,13 +22,13 @@ class ReviewsController < ApplicationController
       # bellow if can? statment prevents a hacker from typing the destroy command in the url
       # to see if passes.
       if !(can? :delete, @review)
-        redirect_to @product, error: "not authorized"
-        # redirect_to product_path(@product), error: "not authorized" -- also works
+        redirect_to product_path(@product), error: "not authorized"
+        return
       end
 
         if @review.destroy
             flash[:success] = "Deleted"
-            redirect_to product_path(@product)
+            redirect_to products_path
         else
             redirect_to root_path
         end

@@ -10,6 +10,7 @@
   <% end %>
 
   <% if user_signed_in? %> 
+    <%= link_to "Favourite Products", favourites_products_path %>
     <span class='text-muted mr-3'>Hello, <%= current_user.full_name %></span>
     <%= button_to "Log Out", session_path, method: :delete, class: "btn btn-danger" %>
   <% else %>

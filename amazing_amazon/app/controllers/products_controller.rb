@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :load_product, except: [:create, :index]
+  before_action :load_product, except: [:create, :index, :favourite_products]
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
@@ -56,6 +56,9 @@ class ProductsController < ApplicationController
       render :edit
     end
 
+  end
+
+  def favourite_products
   end
 
   private
