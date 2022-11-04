@@ -3,7 +3,12 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @products = Product.order(created_at: :DESC)
+    if params[:tag]
+      @tag = Tag.find_or_initialize_by(name: params[:tag])
+      @products = @tag.products.order(created_at: :DESC)
+    else
+      @products = Product.order(created_at: :DESC)
+    end
   end
 
   def new
@@ -64,7 +69,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:title, :description, :price)
+    params.require(:product).permit(:title, :description, :price, :tag_names)
   end
   
   def load_product
