@@ -1,28 +1,4 @@
 <h1>Editing <%= @product.title %></h1>
 
-<%= form_with model: @product, local: true do |f| %>
-  <div >
-    <%= f.label :title %>
-    <br>
-    <%= f.text_field(:title, placeholder: "Product Name") %>
-  </div>
-  <br>
-  <div >
-    <%= f.label :description %>
-    <br>
-    <%= f.text_area(:description, cols: 50, rows: 5, placeholder: "Provide Description") %>
-  </div>
-  <br>
-  <div>
-    <%= f.label :price %>
-    <br>
-    <%= f.number_field(:price, min: 0, placeholder: "Enter Price", step: :any) %>
-  </div>
-  <br>
-<% if @product.new_record? %>
-    <%= f.submit("Create") %>
-  <% else %>
-    <%= f.submit("Update") %>
-  <% end %>
-<% end %>
+<%= render 'form' %>
 <p><%= link_to "Back", products_path %></p>
