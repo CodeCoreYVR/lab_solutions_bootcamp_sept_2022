@@ -6,7 +6,16 @@
   sold by <em><%= @product.user.full_name %></em>
 </small>
   <p>Tags:</p>
-  <p><%= @product.tag_names %></p>
+   <% unless @product.tags.empty? %>
+    <div>
+      <% @product.tags.each do |tag| %>
+        <%= link_to(
+            tag.name,
+            products_path(tag: tag.name)
+        ) %>
+      <% end %>
+    </div>
+  <% end %>
   </p>
   <% if can? :update, @product %>
     <%= link_to "Edit", edit_product_path(@product) %>
