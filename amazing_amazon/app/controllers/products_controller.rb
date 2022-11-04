@@ -20,6 +20,8 @@ class ProductsController < ApplicationController
     
     @product.save
     if @product.save
+      # ProductMailer.notify_product_owner(@product).deliver
+      ProductMailer.delay(run_at: 2.minutes.from_now).notify_product_owner(@product)
       redirect_to product_path(@product)
     else
       render :new

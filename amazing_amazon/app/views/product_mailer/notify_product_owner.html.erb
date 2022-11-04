@@ -1,0 +1,15 @@
+<h1>You Created a Product!</h1>
+<p>
+  Hi <%= @product_owner.full_name %>,
+</p>
+<p>
+  You created a new product:
+</p>
+<h3><%= @product.title %></h3>
+<p>
+  <%= @product.description %>
+</p>
+<p>
+  $<%= @product.price %>
+</p>
+<%= link_to "Check out your product here", product_url(@product) %>

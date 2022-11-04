@@ -1,0 +1,15 @@
+Someone reviewed your product: <%= @product.title %>
+
+Hi <%= @product_owner.full_name %>,
+
+<p>
+  <%= @review_owner.full_name %> reviewed your product:
+</p>
+<p>
+  <%= @review.body %>
+</p>
+<p>
+  Rating: <%= @review.rating %> / 5
+</p>
+
+<%= link_to "Check out your product here", product_url(@product, anchor: dom_id(@review)) %>

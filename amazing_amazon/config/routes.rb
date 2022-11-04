@@ -9,6 +9,12 @@ Rails.application.routes.draw do
   get "/support_me" => "welcome#donate"
   get "/thank_you" => "welcome#thank_you"
   get "/favourites_products" => "products#favourite_products"
+  match(
+    "/delayed_job",
+    to: DelayedJobWeb,
+    anchor: false,
+    via: [:get, :post],
+  )
 
   resources :users, only: [:new, :create]
   resource :session, only: [:new, :create, :destroy]
@@ -23,5 +29,7 @@ Rails.application.routes.draw do
   end
 
   resources :news_articles
+
+  default_url_options :host => "http://localhost:3000"
 
 end

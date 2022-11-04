@@ -105,3 +105,5 @@ dist
 
 #cache files
 cache/
+
+email_vars.rb
