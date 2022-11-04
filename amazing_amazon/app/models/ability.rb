@@ -55,5 +55,13 @@ class Ability
     can(:crud, NewsArticle) do |news_article|
       news_article.user == user
     end
+
+    can :vote, Review do |review|
+      review.user != user 
+    end 
+
+    can :crud, Vote do |vote|
+      vote.user == user 
+    end 
   end
 end

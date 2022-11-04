@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_04_034159) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_04_044046) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -91,6 +91,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_04_034159) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  create_table "votes", force: :cascade do |t|
+    t.boolean "is_up"
+    t.bigint "user_id", null: false
+    t.bigint "review_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["review_id"], name: "index_votes_on_review_id"
+    t.index ["user_id"], name: "index_votes_on_user_id"
+  end
+
   add_foreign_key "favourites", "products"
   add_foreign_key "favourites", "users"
   add_foreign_key "likes", "reviews"
@@ -101,4 +111,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_04_034159) do
   add_foreign_key "reviews", "users"
   add_foreign_key "taggings", "products"
   add_foreign_key "taggings", "tags"
+  add_foreign_key "votes", "reviews"
+  add_foreign_key "votes", "users"
 end

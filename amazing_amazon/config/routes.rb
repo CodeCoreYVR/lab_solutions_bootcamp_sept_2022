@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     delete '/favourites/:id', to: 'favourites#destroy', as: :remove_favourite
     resources :reviews, only: [:create, :destroy] do
       resources :likes, shallow: true, only: [:create, :destroy]
+      resources :votes, only: [:create, :update, :destroy]
     end
     post '/reviews/:id', to: 'reviews#unhide', as: :review_unhide
   end

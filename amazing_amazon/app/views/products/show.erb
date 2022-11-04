@@ -90,7 +90,24 @@
             <%= button_to "Like", product_review_likes_path(@product, review.id), method: :post %>
           <% end %>
       <% end %>
-     <%= review.likes.count %> like/s
+    (<%= pluralize review.likes.count, 'like' %>)
     </p>
+    
+      <% vote = review.votes.find_by(user: current_user) %>
+      <span class="vote-widget">
+        <% if vote.nil? %>
+          <%= button_to 'vote up', product_review_votes_path(@product, review, is_up: true), method: :post %>
+          (<%= review.vote_total %>)
+          <%= button_to 'vote down', product_review_votes_path(@product, review, is_up: false), method: :post %>
+        <% elsif vote.is_up? %>
+          <%= button_to 'vote up', product_review_vote_path(@product, review, vote), method: :delete, class: 'active' %>
+          (<%= review.vote_total %>)
+          <%= button_to 'vote down', product_review_vote_path(@product, review, vote, is_up: false), method: :patch %>
+        <% else %>
+          <%= button_to 'vote up', product_review_vote_path(@product, review, vote, is_up: true), method: :patch %>
+          (<%= review.vote_total %>)
+          <%= button_to 'vote down', product_review_vote_path(@product, review, vote), method: :delete, class: 'active' %>
+        <% end %>
+      </span>
   </div>
 <% end %>
