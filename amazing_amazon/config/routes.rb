@@ -8,14 +8,28 @@ Rails.application.routes.draw do
   get "/contact_us" => "welcome#contact_us"
   get "/support_me" => "welcome#donate"
   get "/thank_you" => "welcome#thank_you"
+  get "/favourites_products" => "products#favourite_products"
+  match(
+    "/delayed_job",
+    to: DelayedJobWeb,
+    anchor: false,
+    via: [:get, :post],
+  )
 
   resources :users, only: [:new, :create]
   resource :session, only: [:new, :create, :destroy]
   resources :products do
-    resources :reviews, only: [:create, :destroy]
+    resource :favourites, only: [:create]
+    delete '/favourites/:id', to: 'favourites#destroy', as: :remove_favourite
+    resources :reviews, only: [:create, :destroy] do
+      resources :likes, shallow: true, only: [:create, :destroy]
+      resources :votes, only: [:create, :update, :destroy]
+    end
     post '/reviews/:id', to: 'reviews#unhide', as: :review_unhide
   end
 
   resources :news_articles
+
+  default_url_options :host => "http://localhost:3000"
 
 end

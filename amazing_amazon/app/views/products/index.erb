@@ -2,6 +2,15 @@
 
 <p><%= link_to "Add Product", new_product_path %></p>
 
+<% if @tag.present? %>
+  <h6>
+    Showing products tagged by:
+    <span>
+      <%= @tag.name %>
+    </span>
+  </h6>
+<% end %>
+
 <% @products.each do |product| %>
   <%= link_to product_path(product) do %>
     <ul>

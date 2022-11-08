@@ -1,0 +1,54 @@
+<%= form_with model: @product, local: true do |f| %>
+  <div >
+    <%= f.label :title %>
+    <br>
+    <%= f.text_field(:title, placeholder: "Product Name") %>
+  </div>
+  <br>
+  <div >
+    <%= f.label :description %>
+    <br>
+    <%= f.text_area(:description, cols: 50, rows: 5, placeholder: "Provide Description") %>
+  </div>
+  <br>
+  <div>
+    <%= f.label :price %>
+    <br>
+    <%= f.number_field(:price, min: 0, placeholder: "Enter Price", step: :any) %>
+  </div>
+  <br>
+  <div class='form-group'>
+    <%= f.label :tag_names %>
+    <%= f.text_field :tag_names %>
+  </div>
+  <br>
+<% if @product.new_record? %>
+    <%= f.submit("Create") %>
+  <% else %>
+    <%= f.submit("Update") %>
+  <% end %>
+<% end %>
+
+<script>
+  $(function(){
+    $('#product_tag_names').selectize({
+      delimeter: ',',
+      persist: false,
+      labelField: 'name',
+      valueField: 'name',
+      searchField: 'name',
+      options: <%= Tag.select(:name).to_json(except: [:id]).html_safe %>,
+      // The above line selects only names from tags table and converts them to
+      // a json array of objects
+      // without including ids and makes sure its a safe_html string
+      // options: [{"name": "first tag"}, {"name": "second tag"}, {"name": "third tag"},
+      //           {"name": "fourth tag"}, {"name": "fifth tag"}, ...]
+      create: function(input) {
+        return {
+          name: input 
+        }
+      }
+    });
+  });
+</script> 
+
