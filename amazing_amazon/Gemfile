@@ -62,7 +62,7 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
-  
+
   gem "rspec-rails"
   gem "factory_bot_rails"
 
@@ -89,8 +89,12 @@ gem "tzinfo-data"
 
 gem 'faker'
 gem 'cowsay'
+<<<<<<< HEAD
+gem 'rails-controller-testing'
+=======
 
 gem "letter_opener", group: :development
 
 gem 'delayed_job_web'
 gem 'delayed_job_active_record'
+>>>>>>> 536a8a29aa041c266ec5dc0a76c8c09638a3e778

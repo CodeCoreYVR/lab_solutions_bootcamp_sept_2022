@@ -17,7 +17,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @product.user = @current_user
-    
+
     @product.save
     if @product.save
       # ProductMailer.notify_product_owner(@product).deliver
@@ -55,7 +55,7 @@ class ProductsController < ApplicationController
       redirect_to @product, error: "not authorized"
       # redirect_to product_path(@product), error: "not authorized" -- also works
     end
-    @product.update(product_params)  
+    @product.update(product_params)
 
     if @product.save
       redirect_to product_path(@product)
@@ -73,7 +73,7 @@ class ProductsController < ApplicationController
   def product_params
     params.require(:product).permit(:title, :description, :price, :tag_names)
   end
-  
+
   def load_product
     if params[:id].present?
       @product = Product.find(params[:id])
