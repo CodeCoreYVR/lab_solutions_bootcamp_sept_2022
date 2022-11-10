@@ -3,7 +3,7 @@ require 'rails_helper'
 # $ rails g controller api/v1/products
 
 RSpec.describe "Api::V1::Products", type: :request do
-  describe "GET /index" do
-    pending "add some examples (or delete) #{__FILE__}"
-  end
+  # describe "GET /index" do
+  #   pending "add some examples (or delete) #{__FILE__}"
+  # end
 end

@@ -1,4 +1,7 @@
 class ProductSerializer < ActiveModel::Serializer
+  # created with:
+  # $ rails g serializer product 
+
   attributes :id, :title, :description, :price, :created_at, :updated_at
   
   belongs_to :user, key: :seller
