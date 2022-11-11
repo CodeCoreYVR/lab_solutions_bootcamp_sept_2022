@@ -1,6 +1,6 @@
 class Api::V1::ProductsController < Api::ApplicationController
   # created with:
-  # $ rails g controller api/v1/products
+  # $ rails g controller api/v1/products --skip-template-engine
 
   before_action :authenticate_user!, except: [:index, :show]
   before_action :find_product,only:[:show, :destroy, :update]
