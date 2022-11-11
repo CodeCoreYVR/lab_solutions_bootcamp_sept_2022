@@ -6,7 +6,7 @@ class ReviewsController < ApplicationController
         @review = Review.new(params.require(:review).permit(:rating,:body,:is_hidden))
         @review.product = @product
         @review.user = @current_user
-        
+       
         if @review.save
             ReviewMailer.notify_product_owner(@review).deliver
             @reviews = @product.reviews.order(created_at: :desc)
