@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <script defer src="/js/main.js" charset="utf-8"></script>
+</head>
+
+<body>
+
+  <!-- nav -->
+  <header>
+    <div class="ui secondary pointing menu navbar">
+      <a class="active item" href="#" data-target="welcome"> Welcome </a>
+      <a class="item" href="#" data-target="product-index"> Products </a>
+      <a class="item" href="#" data-target="product-new"> New Product </a>
+    </div>
+  </header>
+
+  <!-- welcome section -->
+  <div class="ui segment">
+    <section class="page active" id="welcome">
+      <div class="ui header">Welcome to Amazing Amazon SPA</div>
+    </section>
+
+    <!-- show a product -->
+    <section class="page" id="product-show"></section>
+
+    <!-- products index -->
+    <section class="page" id="product-index">
+      <div class="ui header">Products</div>
+      <ul class="ui list product-list"></ul>
+    </section>
+
+    <!-- create new product -->
+    <section class="page" id="product-new">
+      <div class="ui header">New Product</div>
+
+      <form class="ui form" id="new-product-form">
+        <div class="field">
+          <label for="title">Title</label>
+          <input type="text" name="title" id="title" placeholder="product Title" />
+        </div>
+
+        <div class="field">
+          <label for="description">Description</label>
+          <textarea name="description" id="description" placeholder="product description" rows="3"></textarea>
+        </div>
+
+        <button class="ui button" type="submit">Create product</button>
+      </form>
+    </section>
+
+    <!-- edit/update product -->
+    <section class="page" id="product-edit">
+      <div class="ui header">Edit product</div>
+
+      <form class="ui form" id="edit-product-form">
+        <div class="field">
+          <label for="title">Title</label>
+          <input type="text" name="title" id="title" placeholder="product Title" />
+        </div>
+
+        <div class="field">
+          <label for="description">Description</label>
+          <textarea name="description" id="description" placeholder="product description" rows="3"></textarea>
+        </div>
+
+        <input type="hidden" value="" name="id" />
+        <button class="ui button" type="submit">Update Product</button>
+      </form>
+    </section>
+  </div>
+</body>
+</html>
