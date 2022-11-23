@@ -20,5 +20,12 @@ module AmazingAmazon
     # config.eager_load_paths << Rails.root.join("extras")
     config.active_job.queue_adapter = :delayed_job
     config.autoload_paths  << Rails.root.join("app", "jobs")
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '127.0.0.1:5500'
+        resource '/api/v1/*',
+        headers: :any, methods: [:get, :post, :delete, :put, :patch, :options, :head]
+      end
+    end
   end
 end

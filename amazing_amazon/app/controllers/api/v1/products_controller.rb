@@ -99,7 +99,8 @@ class Api::V1::ProductsController < Api::ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:title, :description, :price, :tag_names)
+    p params
+    params.permit(:title, :description)
   end
 
   def authorize!
