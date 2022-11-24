@@ -38,7 +38,7 @@ class Ability
       user.is_admin
     end
 
-    can [:update, :delete], Product do |product|
+    can [:update, :delete, :crud], Product do |product|
       product.user == user
     end
 

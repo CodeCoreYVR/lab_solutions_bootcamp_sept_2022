@@ -18,8 +18,9 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     @product.user = @current_user
 
-    @product.save
+    # @product.save
     if @product.save
+
       # ProductMailer.notify_product_owner(@product).deliver
       ProductMailer.delay(run_at: 2.minutes.from_now).notify_product_owner(@product)
       redirect_to product_path(@product)
