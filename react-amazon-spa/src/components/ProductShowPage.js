@@ -8,7 +8,7 @@ export default class ProductShowPage extends Component {
     super(props);
     this.state = {
       product: productData
-    };
+    }
   }
   
   render() {
