@@ -9,6 +9,7 @@ export default class ReviewList extends Component {
                 return <ReviewDetails
                     review={rvw}
                     key={i}
+                    deleteReview={() => this.props.deleteReview(rvw.id)}
                 />
             })
 
