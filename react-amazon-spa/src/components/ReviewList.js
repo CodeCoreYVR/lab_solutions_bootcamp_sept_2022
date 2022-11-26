@@ -1,18 +1,27 @@
-import React, { Component } from 'react';
-import ReviewDetails from './ReviewsDetails';
+import React from "react";
+import ReviewDetails from "./ReviewDetails";
 
-export default class ReviewList extends Component {
-    render() {
-        return <div className='card-body'>
-            <header>Reviews:</header>
-            {this.props.reviews.map((rvw,i) => {
-                return <ReviewDetails
-                    review={rvw}
-                    key={i}
-                />
-            })
+const ReviewList = (props = {}) => {
+  const { reviews, onReviewDeleteClick = () => {} } = props;
 
-            }
-        </div>;
-    }
-}
+  return (
+    <div>
+      {reviews
+        ? reviews.map((review, i) => {
+            return (
+              <ReviewDetails
+                key={i}
+                rating={review.rating}
+                id={review.id}
+                body={review.body}
+                reviewerName={review.reviewer}
+                createdAt={review.created_at}
+                deleteReview={() => props.deleteReview(review.id)}
+              />
+            );
+          })
+        : ""}
+    </div>
+  );
+};
+export default ReviewList;
