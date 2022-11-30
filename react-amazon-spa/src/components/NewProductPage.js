@@ -4,15 +4,35 @@ import NewProductForm from "./NewProductForm";
 class NewProductPage extends Component {
   constructor(props) {
     super(props);
-    this.state = { errors: [] };
+    this.state = {
+      newProduct: {
+        title: "",
+        description: "",
+        price: "",
+      },
+      errors: []
+    };
     this.createNewProduct = this.createNewProduct.bind(this);
   }
 
-  createNewProduct(params) {
-    console.log(
-      `Params: ${params.title} ${params.description} ${params.price}`
-    );
-    Product.create(params).then((product) => {
+  onChangeProduct = (e) => {
+    const { name, value } = e.target;
+    this.setState({
+      newProduct: {
+        ...this.state.newProduct,
+        [name]: value
+      }
+    })
+  }
+
+  createNewProduct() {
+    let np = this.state.newProduct;
+    Product.create({
+      title: np.title,
+      description: np.description,
+      price: np.price,
+      created_at: new Date(),
+    }).then((product) => {
       console.log(`product: ${product.errors}`);
       if (product.errors) {
         console.log(`productErrors: ${product.errors}`);
@@ -27,6 +47,8 @@ class NewProductPage extends Component {
     return (
       <div>
         <NewProductForm
+          onChange={this.onChangeProduct}
+          product={this.state.newProduct}
           errors={this.state.errors}
           submitForm={(params) => this.createNewProduct(params)}
         />

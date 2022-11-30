@@ -1,17 +1,26 @@
 import { NavLink } from "react-router-dom";
-
-const NavBar = (props) => {
+import { Session } from "../requests";
+const NavBar = ({ currentUser, onSignOut }) => {
+  const handleSignOut = () => {
+    Session.destroy().then(() => {
+      onSignOut();
+    });
+  };
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <ul className="navbar-nav mr-auto">
-        <li className="nav-item">
-          <NavLink className={"nav-link"} to="/products">Product Index</NavLink>
-        </li>
-        <li className="nav-item">
-          <NavLink className={"nav-link"} to="/products/new">New Product</NavLink>
-        </li>
-        
-      </ul>
+    <nav>
+      <NavLink to="/products">Product Index</NavLink>|
+      {currentUser ? (
+        <>
+          <NavLink to="/products/new">New Product</NavLink>-
+          <span>Welcome, {currentUser.first_name}</span>-{" "}
+          <button onClick={handleSignOut}>Sign Out</button>
+        </>
+      ) : (
+        <>
+          <NavLink to="/sign_in">Sign In</NavLink>|
+          <NavLink to="/sign_up">Sign Up</NavLink>
+        </>
+      )}
     </nav>
   );
 };

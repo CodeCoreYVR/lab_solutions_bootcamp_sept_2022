@@ -1,13 +1,20 @@
-import React from "react";
+import React, { Component } from "react";
 import ReviewDetails from "./ReviewDetails";
 
-const ReviewList = (props = {}) => {
-  const { reviews, onReviewDeleteClick = () => {} } = props;
+export default class ReviewList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      errors: []
+    };
+  }
 
-  return (
-    <div>
-      {reviews
-        ? reviews.map((review, i) => {
+  render() {
+    const { reviews } = this.props;
+    return (
+      <div>
+        {reviews
+          ? reviews.map((review, i) => {
             return (
               <ReviewDetails
                 key={i}
@@ -21,7 +28,7 @@ const ReviewList = (props = {}) => {
             );
           })
         : ""}
-    </div>
-  );
-};
-export default ReviewList;
+        </div>
+      )
+    }
+  }
