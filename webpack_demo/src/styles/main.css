@@ -1,0 +1,13 @@
+/* src/styles/main.css */
+html {
+    font-family: Helvetica, sans-serif;
+    background-color: blue;
+  }
+  
+  * {
+    font-family: inherit;
+  }
+  
+  img {
+    border-radius: 10px;
+  }
