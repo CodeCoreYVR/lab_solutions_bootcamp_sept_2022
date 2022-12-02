@@ -12,6 +12,10 @@ class UsersController < ApplicationController
         render :new
       end
     end
+
+    def show
+      @user=User.find params[:id]
+    end
   
     private
   
@@ -21,7 +25,8 @@ class UsersController < ApplicationController
         :last_name,
         :email,
         :password,
-        :password_confirmation
+        :password_confirmation,
+        :address
       )
     end
 end

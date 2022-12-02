@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     via: [:get, :post],
   )
 
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :show]
   resource :session, only: [:new, :create, :destroy]
   resources :products do
     resource :favourites, only: [:create]

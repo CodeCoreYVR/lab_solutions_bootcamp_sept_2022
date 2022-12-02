@@ -22,4 +22,16 @@ class User < ApplicationRecord
     def full_name
         "#{first_name} #{last_name}".strip.titleize
     end
+
+    #GEOCODE
+
+    #We are stating that we will be converting the address to geocode
+
+    geocoded_by :address
+
+    #And when a user saves an address, it will be automatically converted to longitude and lattitude,
+
+    #and will automatically be saved in the longitude and lattitude columns of the user
+
+    after_validation :geocode
 end

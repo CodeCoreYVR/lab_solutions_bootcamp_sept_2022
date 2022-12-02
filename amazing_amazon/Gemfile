@@ -97,3 +97,7 @@ gem "letter_opener", group: :development
 gem 'delayed_job_web'
 gem 'delayed_job_active_record'
 gem 'rack-cors'
+
+gem 'geocoder'
+gem 'gmaps4rails'
+gem 'underscore-rails', '~> 1.8', '>= 1.8.3'
