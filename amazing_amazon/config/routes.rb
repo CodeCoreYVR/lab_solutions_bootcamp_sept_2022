@@ -47,6 +47,7 @@ Rails.application.routes.draw do
         resources :reviews
       end
     end
+    match "*unmatched_route", to: "application#not_found", via: :all
   end
 
 

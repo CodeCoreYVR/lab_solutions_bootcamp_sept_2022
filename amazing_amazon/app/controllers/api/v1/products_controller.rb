@@ -5,6 +5,8 @@ class Api::V1::ProductsController < Api::ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :find_product,only:[:show, :destroy, :update]
   before_action :authorize!, only: [:update, :destroy]
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+
 
 
   # postman requests for testing
@@ -91,6 +93,21 @@ class Api::V1::ProductsController < Api::ApplicationController
     end
   end
 
+  protected
+
+  def record_not_found(error)
+    render(
+      status: 404,
+      json: {
+        errors: [
+          {
+            type: error.class.to_s,
+            message: error.message,
+          },
+        ],
+      },
+    )
+  end
 
   private
 
