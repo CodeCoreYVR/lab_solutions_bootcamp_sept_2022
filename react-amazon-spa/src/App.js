@@ -7,6 +7,7 @@ import NavBar from "./components/NavBar";
 import NewProductPage from "./components/NewProductPage";
 import SignInPage from "./components/SignInPage";
 import SignUpPage from "./components/SignUpPage";
+import NotFoundPage from "./components/NotFoundPage";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -66,6 +67,7 @@ const App = () => {
               <ProductShowPage {...routeProps} userId={user?.id}/>
             )}
           />
+          <Route component={NotFoundPage}></Route>
         </Switch>
       </BrowserRouter>
   )
